@@ -26,8 +26,14 @@ $20mBt = Read-Host "20mm Build time (Seconds)"
 $20mBtHex = '0x{0:X}' -f ([byte]$20mBt)
 $40mBt = Read-Host "40mm Build time (Seconds)"
 $40mBtHex = '0x{0:X}' -f ([byte]$40mBt)
+$100mBt = Read-Host "40mm Build time (Seconds)"
+$100mBtHex = '0x{0:X}' -f ([byte]$100mBt)
+$120mBt = Read-Host "40mm Build time (Seconds)"
+$120mBtHex = '0x{0:X}' -f ([byte]$120mBt)
+$160mBt = Read-Host "40mm Build time (Seconds)"
+$160mBtHex = '0x{0:X}' -f ([byte]$160mBt)
 
-echo 'Debug (Show Hex)',$irBtHex,$lsrBtHex,$aaBtHex,$tvBtHex,$torpBtHex,$flrBtHex,$20mBtHex,$40mBtHex
+echo 'Debug (Show Hex)',$irBtHex,$lsrBtHex,$aaBtHex,$tvBtHex,$torpBtHex,$flrBtHex,$20mBtHex,$40mBtHex,$100mBtHex,$120mBtHex,$160mBtHex
 
 $bytes  = [System.IO.File]::ReadAllBytes($file)
 $irOffset = 422850
@@ -40,18 +46,24 @@ $torpCntOffset = 423360
 $flrOffset = 425412
 $20mOffset = 425511
 $40mOffset = 425112
+$100mOffset = 425610
+$120mOffset = 425709
+$160mOffset = 425808
 
 
-$bytes[$irOffset]  = $irBtHex
-$bytes[$lsrOffset]  = $lsrBtHex
-$bytes[$aaOffset]  = $aaBtHex
-$bytes[$tvOffset]  = $tvBtHex
-$bytes[$torpOffset]  = $torpBtHex
-$bytes[$torpNoiOffset]  = $torpBtHex
-$bytes[$torpCntOffset]  = $torpBtHex
-$bytes[$flrOffset]  = $flrBtHex
-$bytes[$20mOffset]  = $20mBtHex
-$bytes[$40mOffset]  = $40mBtHex
+$bytes[$irOffset] = $irBtHex
+$bytes[$lsrOffset] = $lsrBtHex
+$bytes[$aaOffset] = $aaBtHex
+$bytes[$tvOffset] = $tvBtHex
+$bytes[$torpOffset] = $torpBtHex
+$bytes[$torpNoiOffset] = $torpBtHex
+$bytes[$torpCntOffset] = $torpBtHex
+$bytes[$flrOffset] = $flrBtHex
+$bytes[$20mOffset] = $20mBtHex
+$bytes[$40mOffset] = $40mBtHex
+$bytes[$100mOffset] = $100mBtHex
+$bytes[$120mOffset] = $120mBtHex
+$bytes[$160mOffset] = $160mBtHex
 
 write-host Writing modded file CC2_Mod.exe
 [System.IO.File]::WriteAllBytes("CC2_Mod.exe", $bytes)
